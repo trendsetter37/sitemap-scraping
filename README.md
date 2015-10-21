@@ -1,0 +1,38 @@
+# Simple Sitemap Scraper
+---
+This example is initiated with the following command:
+
+```
+scrapy crawl oxygen -o items.json -t json
+```
+
+Therefore the pipelines.py file isn't fully implemented. Also ensure that the  
+following python modules are installed.
+
+* requests
+* scrapy
+* pyquery
+
+### Example items results
+---
+```json
+[
+    {
+        "code": "blue-is-my-name-hoody",
+        "description": "Steve J and Yoni P have taken a simple grey sweatshirt and simply added the slogan blue is my name across the front. With a hood and pockets, this sweatshirt will certainly keep you cozy on cold nights!",
+        "designer": "Steve J and Yoni P",
+        "eur_price": "265.08",
+        "gbp_price": 195.0,
+        "gender": "F",
+        "image_urls": [
+            "http://www.oxygenboutique.com/GetImage/cT0xMDAmdz01NiZoPTExMiZQSW1nPTY3NzJhMzNhLTRkNWMtNGIwNy1iMjgzLWZlNzQ2MzJhOWZkMy5qcGc1.jpg"
+        ],
+        "link": "http://www.oxygenboutique.com/blue-is-my-name-hoody.aspx",
+        "name": "Steve J and Yoni P Blue is my Name Hoody",
+        "raw_color": "grey",
+        "sale_discount": "0%",
+        "stock_status": "{\"S\": \"In Stock\", \"M\": \"In Stock\", \"L\": \"In Stock\"}",
+        "usd_price": "301.14"
+    }
+]
+```

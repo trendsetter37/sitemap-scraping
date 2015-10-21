@@ -1,0 +1,16 @@
+User-agent: *
+Disallow: /AdminPanel/
+Disallow: /App_Code/
+Disallow: /App_Data/
+Disallow: /Bin/
+Disallow: /CloudsZoom/
+Disallow: /UploadedImages/
+Disallow: /css/
+Disallow: /js/
+Disallow: /jscripts/
+Disallow: /skins/
+Disallow: /Uploadify/
+Disallow: /UserControl/
+Disallow: /images/
+Disallow: Analytics.aspx
+Disallow: /BackupOBASPDOTNETFRONT-4july2013/

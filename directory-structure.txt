@@ -1,0 +1,18 @@
+.
+├── directory-structure.txt
+├── oxygendemo
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── items.py
+│   ├── pipelines.py
+│   ├── settings.py
+│   ├── settings.pyc
+│   └── spiders
+│       ├── __init__.py
+│       ├── __init__.pyc
+│       ├── oxygen.py
+│       └── robots.txt
+├── README.md
+└── scrapy.cfg
+
+2 directories, 13 files
