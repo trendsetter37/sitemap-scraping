@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scrapy.spiders.sitemap import *
+from scrapy.spiders.sitemap import SitemapSpider
 from pyquery import PyQuery as pq
 from oxygendemo.items import OxygendemoItem
-import oxygendemo.utilities
-from oxygendemo.utilities import *
+import oxygendemo.utilities as util
 
 
 class OxygenSpider(SitemapSpider):
 
-    print 'MY SPIDER, IS ALIVE'
     name = "oxygen"
-    allowed_domains = ["oxygenboutique.com"]
-    sitemap_urls = ['http://www.oxygenboutique.com/sitemap.xml']
-    sitemap_rules = generate_sitemap_rules()
-    ex_rates = get_exchange_rates()
+    allowed_domains = ("oxygenboutique.com",)
+    sitemap_urls = ('http://www.oxygenboutique.com/sitemap.xml',)
+    sitemap_rules = util.generate_sitemap_rules()
+    ex_rates = util.get_exchange_rates()
 
     def parse_sitemap_url(self, response):
 
@@ -24,8 +22,8 @@ class OxygenSpider(SitemapSpider):
 
         item = OxygendemoItem()
         d = pq(response.body)
-        parsed_url = urlparse.urlparse(response.url)
-        base_url = get_base(parsed_url)
+        parsed_url = util.urlparse.urlparse(response.url)
+        base_url = util.get_base(parsed_url)
         product_info = d('.right div#accordion').children()
         image_links = d('div#product-images tr td a img')
         description = product_info.eq(1).text()\
@@ -40,7 +38,7 @@ class OxygenSpider(SitemapSpider):
             'discount': 0
             }
 
-        item['gbp_price'], item['sale_discount'] = get_price_and_discount(
+        item['gbp_price'], item['sale_discount'] = util.get_price_and_discount(
             gbp_price
         )
 
@@ -57,10 +55,11 @@ class OxygenSpider(SitemapSpider):
             item['usd_price'], item['eur_price'] = ['N/A'] * 2
 
         item['designer'] = d('.right').find('.brand_name a').text()
-        item['stock_status'] = json.dumps(determine_stock_status(d('select')
-                                          .children()))
+        item['stock_status'] = util.json.dumps(util.determine_stock_status(
+            d('select').children()))
         item['gender'] = 'F'  # Oxygen boutique carries Womens's clothing
-        item['image_urls'] = fetch_images(image_links, base_url)
-        item['raw_color'] = get_product_color_from_description(description)
+        item['image_urls'] = util.fetch_images(image_links, base_url)
+        item['raw_color'] = util.get_product_color_from_description(
+            description)
 
         yield item

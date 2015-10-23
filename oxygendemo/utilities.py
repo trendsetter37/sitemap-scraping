@@ -43,24 +43,24 @@ def determine_type(short_summary):
 
     short_summary = short_summary.upper()
 
-    S = {
+    S = (
         'HEEL', 'SNEAKER', 'SNEAKERS',
         'BOOT', 'FLATS', 'WEDGES',
         'SANDALS'
-    }
+    )
 
-    J = {
+    J = (
         'RING', 'NECKLACE', 'RING',
         'BANGLE', 'CHOKER', 'COLLIER',
         'BRACELET', 'TATTOO', 'EAR JACKET'
-    }
+    )
 
-    B = {
+    B = (
         'BAG', 'PURSE', 'CLUTCH',
         'TOTE'
-    }
+    )
 
-    A = {
+    A = (
         'PINNI', 'BLOUSE', 'TOP',
         'SKIRT', 'KNICKER', 'DRESS',
         'DENIM', 'COAT', 'JACKET',
@@ -75,7 +75,7 @@ def determine_type(short_summary):
         'HOODY', 'SATEEN', 'BIKER',
         'JEAN', 'SWEAT', 'PULL',
         'BIKINI', 'LE GRAND GARCON'
-    }
+    )
 
     types = {
         'B': B, 'S': S,
